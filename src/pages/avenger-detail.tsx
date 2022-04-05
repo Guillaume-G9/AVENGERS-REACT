@@ -27,25 +27,29 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
             <h2 className="header center">{ avenger.superHeroName }</h2>
             <div className="card hoverable"> 
               <div className="card-image">
-                <img src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
+                <img className="hoverable" src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
               </div>
               <div className="card-stacked">
                 <div className="card-content">
                   <table className="bordered striped">
                     <tbody>
                       <tr> 
-                        <td>Nom</td> 
+                        <td>Name</td> 
                         <td><strong>{ avenger.name }</strong></td> 
                         <td>{ avenger.familyName}</td> 
                       </tr>
                       <tr> 
-                        <td>Informations</td> 
+                        <td>About</td> 
                         <td><span key={avenger.race} className={formatRace(avenger.race)}>{avenger.race}</span></td> 
                       </tr> 
                       <tr> 
-                        <td>Date de création</td> 
+                        <td>Created</td> 
                         <td>{formatDate(avenger.created)}</td>
                         <td>{avenger.author}</td>
+                      </tr>
+                      <tr>
+                          <td>Backstory</td>
+                          <td style={{width: '25vw', margin: '0 auto'}}>{avenger.backstory}</td>
                       </tr>
                     </tbody>
                   </table>
@@ -58,7 +62,13 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
           </div>
         </div>
       ) : (
-        <h4 className="center">Aucun avenger à afficher !</h4>
+        <div className="center">
+        <img style={{margin: '-5%'}} src="https://i.ibb.co/5kgsWDW/deadpool-shrug-poster-r09b83d0c41094c369d6f4af36aa5b56d-wvu-8byvr-704.webp" alt="Page non trouvée"/>
+        <h1>Aucun Avenger à afficher !</h1> 
+        <Link to="/" className="waves-effect waves-teal btn-flat">
+          Retourner à l'accueil
+        </Link>
+      </div>
       )}
     </div>
   );

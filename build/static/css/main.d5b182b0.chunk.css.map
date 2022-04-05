@@ -1,0 +1,1 @@
+{"version":3,"sources":["avenger-card.css"],"names":[],"mappings":"AAAA,YACI,wBAAyB,CACzB,YACJ","file":"main.d5b182b0.chunk.css","sourcesContent":[".horizontal {\n    border: solid 1px #f5f5f5;\n    height: 200px;\n}"]}

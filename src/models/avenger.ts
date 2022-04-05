@@ -9,6 +9,7 @@ export default class Avener {
     superHeroName: string;
     author: string;
     created: Date;
+    backstory: string;
      
     // 2. Définition des valeurs par défaut des propriétés 
     constructor(
@@ -20,7 +21,8 @@ export default class Avener {
      picture: string = 'http://...',
      superHeroName: string = "superHeroName",
      author: string ="author",
-     created: Date = new Date()
+     created: Date = new Date(),
+     backstory: string ="backstory"
     ) {
      // 3. Initialisation des propiétés 
      this.id = id;
@@ -32,5 +34,6 @@ export default class Avener {
      this.superHeroName = superHeroName;
      this.author = author;
      this.created = created;
+     this.backstory = backstory;
     }
    }

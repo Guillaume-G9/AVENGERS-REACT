@@ -3,6 +3,7 @@ import Avenger from '../models/avenger'
 import './avenger-card.css';
 import formatDate from '../helpers/format-date';
 import formatRace from '../helpers/format-race';
+import { useHistory } from 'react-router-dom';
 
 
 type Props = {
@@ -13,6 +14,7 @@ type Props = {
 const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'}) => {
 
     const [color, setColor] = useState<string>()
+    const history = useHistory();
 
     const showBorder = () => {
         setColor(borderColor);
@@ -22,9 +24,13 @@ const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'
         setColor('#f5f5f5');
     }
 
+    const goToAvenger = (id: number) => {
+        history.push(`/avengers/${id}`);
+    }
+
     return (
      
-    <div className="col s12 m4" onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+    <div className="col s12 m4"  onClick={() => goToAvenger(avenger.id)} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
         <div className="card horizontal" style={{ borderColor: color}}>
             <div className="card-image">
                 <img height="200vh" src={avenger.picture} alt= {avenger.name} />
