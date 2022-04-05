@@ -9,6 +9,7 @@ export const AVENGERS: Avenger[] = [
         age: 35,
         picture: "https://i.ibb.co/PZkjMsv/Avengers-Academy-Vol-1-7-Textless.webp",
         superHeroName: "Ant-Man",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -19,6 +20,7 @@ export const AVENGERS: Avenger[] = [
         age: 35,
         picture:"https://i.ibb.co/vLmTDBc/Black-Panther-Vol-8-1-Devil-Dog-Comics-and-Jolzar-Collectibles-Exclusive-Virgin-Variant.webp",
         superHeroName: "Black Panther",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -29,6 +31,7 @@ export const AVENGERS: Avenger[] = [
         age: 37,
         picture: "https://i.ibb.co/ySdtntG/Natalia-Romanova-Earth-616-from-Black-Widow-Vol-8-10-Brooks-Variant-001.webp",
         superHeroName: "Black Widow",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -39,6 +42,7 @@ export const AVENGERS: Avenger[] = [
         age: 93,
         picture: "https://i.ibb.co/BVLdVg3/Captain-America-Vol-6-2-Textless.webp",
         superHeroName: "Captain America",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -49,6 +53,7 @@ export const AVENGERS: Avenger[] = [
         age: 48,
         picture: "https://i.ibb.co/Zdx5D88/Marvel-Tales-Doctor-Strange-Vol-1-1-Virgin-Variant.webp",
         superHeroName: "Doctor Strange",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -59,16 +64,18 @@ export const AVENGERS: Avenger[] = [
         age: 42,
         picture: "https://i.ibb.co/DD88Jr0/Civil-War-II-Vol-1-3-Hawkeye-Variant-Textless.webp",
         superHeroName: "Hawkeye",
+        author: "Guillaume9",
         created: new Date()
     },
     {
         id: 7,
         name: "Bruce",
         familyName: "Banner",
-        race: "Mutant",
+        race: "Human",
         age: 42,
         picture: "https://i.ibb.co/q0v4vtt/Immortal-Hulk-Vol-1-20-Unknown-Comic-Books-Exclusive-Virgin-Variant.webp",
         superHeroName: "Hulk",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -79,6 +86,7 @@ export const AVENGERS: Avenger[] = [
         age: 37,
         picture: "https://i.ibb.co/rtGX7gg/Iron-Man-Vol-6-1-Brooks-Variant-Textless.webp",
         superHeroName: "Iron Man",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -89,6 +97,7 @@ export const AVENGERS: Avenger[] = [
         age: 1200,
         picture: "https://i.ibb.co/56NfDXD/Loki-Vol-3-1-Textless.webp",
         superHeroName: "Loki",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -99,6 +108,7 @@ export const AVENGERS: Avenger[] = [
         age: 25,
         picture: "https://i.ibb.co/CWtJGNT/Pietro-Maximoff-Earth-616-from-Quicksilver-No-Surrender-Vol-1-4-001.webp",
         superHeroName: "Quicksilver",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -109,6 +119,7 @@ export const AVENGERS: Avenger[] = [
         age: 25,
         picture: "https://i.ibb.co/XLnc1gn/Shang-Chi-Vol-1-1-Textless.webp",
         superHeroName: "Shang-Chi",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -119,6 +130,7 @@ export const AVENGERS: Avenger[] = [
         age: 23,
         picture: "https://i.ibb.co/rmqTdYk/Amazing-Spider-Man-Vol-5-15-Textless.webp",
         superHeroName: "Spider-Man",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -129,6 +141,7 @@ export const AVENGERS: Avenger[] = [
         age: 1500,
         picture: "https://i.ibb.co/nMjvW6Q/Thor-Vol-6-19-Asrar-Variant-Textless.webp",
         superHeroName: "Thor",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -139,6 +152,7 @@ export const AVENGERS: Avenger[] = [
         age: 3,
         picture:"https://i.ibb.co/hfyxkfr/All-New-All-Different-Avengers-Vol-1-13-Textless.webp",
         superHeroName: "Vision",
+        author: "Guillaume9",
         created: new Date()
     },
     {
@@ -149,6 +163,7 @@ export const AVENGERS: Avenger[] = [
         age: 32,
         picture:"https://i.ibb.co/26qDPfc/Unstoppable-Wasp-Vol-1-1-Torque-Variant-Textless.webp",
         superHeroName: "Wasp",
+        author: "Guillaume9",
         created: new Date()
     }
 ];
