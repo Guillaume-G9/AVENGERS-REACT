@@ -3,6 +3,7 @@ import AvengerList from './pages/avenger-list';
 import AvengerDetail from './pages/avenger-detail';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/page-not-found';
+import AvengerEdit from './pages/avenger-edit'
 
   
 const App: FunctionComponent = () => {
@@ -16,9 +17,10 @@ const App: FunctionComponent = () => {
                  </div>
              </nav>
              <Switch>
-                <Route exact path="/" component={AvengerList}/>
-                <Route exact path="/avengers" component={AvengerList}/>
-                <Route path="/avengers/:id" component={AvengerDetail}/>
+                <Route exact path="/" component={AvengerList} />
+                <Route exact path="/avengers" component={AvengerList} />
+                <Route exact path="/avengers/edit/:id" component={AvengerEdit} />
+                <Route path="/avengers/:id" component={AvengerDetail} />
                 <Route component={PageNotFound} />
              </Switch>
          </div>

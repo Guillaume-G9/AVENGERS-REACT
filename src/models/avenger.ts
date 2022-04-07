@@ -3,7 +3,7 @@ export default class Avener {
     id: number;
     name: string;
     familyName: string;
-    race: string;
+    race: Array<string>;
     age: number;
     picture: string;
     superHeroName: string;
@@ -16,7 +16,7 @@ export default class Avener {
      id: number,
      name: string = 'name',
      familyName: string = 'familyName',
-     race: string = 'race',
+     race: Array<string> = ['Human'],
      age: number = 1000,
      picture: string = 'http://...',
      superHeroName: string = "superHeroName",

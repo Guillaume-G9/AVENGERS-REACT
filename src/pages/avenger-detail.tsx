@@ -27,6 +27,9 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
             <h2 className="header center">{ avenger.superHeroName }</h2>
             <div className="card hoverable"> 
               <div className="card-image">
+            <Link to={`/avengers/edit/${avenger.id}`} style={{margin: '5%'}} className="btn-large btn-floating halfway-fab waves-effect waves-light red darken-2">
+            <i className="material-icons">edit</i>
+            </Link>
                 <img className="hoverable" src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
               </div>
               <div className="card-stacked">
@@ -34,13 +37,15 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
                   <table className="bordered striped">
                     <tbody>
                       <tr> 
-                        <td>Name</td> 
+                        <td>Name</td>
                         <td><strong>{ avenger.name }</strong></td> 
                         <td>{ avenger.familyName}</td> 
                       </tr>
                       <tr> 
                         <td>About</td> 
-                        <td><span key={avenger.race} className={formatRace(avenger.race)}>{avenger.race}</span></td> 
+                        <td>{avenger.race.map(race => (
+                        <span key={race} className={formatRace(race)}>{race}</span>
+                        ))}</td>
                       </tr> 
                       <tr> 
                         <td>Created</td> 
@@ -54,7 +59,7 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
                     </tbody>
                   </table>
                 </div>
-                <div className="card-action">
+                <div className="btn red lighten-3">
                   <Link to="/">Retour</Link>
                 </div>
               </div>
@@ -65,7 +70,7 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
         <div className="center">
         <img style={{margin: '-5%'}} src="https://i.ibb.co/5kgsWDW/deadpool-shrug-poster-r09b83d0c41094c369d6f4af36aa5b56d-wvu-8byvr-704.webp" alt="Page non trouvée"/>
         <h1>Aucun Avenger à afficher !</h1> 
-        <Link to="/" className="waves-effect waves-teal btn-flat">
+        <Link to="/" className="btn red darken-2">
           Retourner à l'accueil
         </Link>
       </div>

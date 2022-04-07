@@ -39,7 +39,9 @@ const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'
                 <div className="card-content">
                     <p>{avenger.superHeroName}</p>
                     <p><small>{avenger.name} {avenger.familyName}</small></p>
-                    <span key={avenger.race} className={formatRace(avenger.race)}><small>{avenger.race}</small></span>
+                    {avenger.race.map(race => (
+                    <span key={race} className={formatRace(race)}><small>{race}</small></span>
+                    ))}
                     <br />
                     <br />
                     <p><small>{formatDate(avenger.created)}</small></p>

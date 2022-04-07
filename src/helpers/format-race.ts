@@ -11,8 +11,20 @@ const formatRace = (race: string): string => {
       case 'Mutant': 
         color = 'green accent-1'; 
         break;  
+      case 'Synthezoid': 
+        color = 'purple lighten-2'; 
+        break; 
+      case 'Deviant': 
+        color = 'lime lighten-1'; 
+        break;
+      case 'Eternal': 
+        color = 'deep-orange lighten-1'; 
+        break; 
+      case 'Celestial': 
+        color = 'pink accent-1'; 
+        break;
       default: 
-        color = 'purple lighten-3'; 
+        color = 'grey darken-2'; 
         break; 
     }
    
