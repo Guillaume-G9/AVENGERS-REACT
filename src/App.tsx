@@ -14,7 +14,7 @@ const App: FunctionComponent = () => {
          <div style={{background: `repeat 100% / contain url("https://i.ibb.co/R9Rp87c/marvel-logo-wallpaper.webp")`}}>
              <nav  style={{marginBottom: '15vh'}}>
                  <div className="nav-wrapper red darken-4">
-                    <Link to="/" className="brand-logo center">MCU MEMBERS</Link>
+                    <Link to="/avengers" className="brand-logo center">MCU MEMBERS</Link>
                  </div>
              </nav>
              <Switch>

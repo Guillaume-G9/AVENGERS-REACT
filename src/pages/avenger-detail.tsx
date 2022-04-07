@@ -26,7 +26,7 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
             <Link to={`/avengers/edit/${avenger.id}`} style={{margin: '5%'}} className="btn-large btn-floating halfway-fab waves-effect waves-light red darken-2">
             <i className="material-icons">edit</i>
             </Link>
-                <img src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
+                <img src={avenger.picture} alt={avenger.name} style={{width: '200px', margin: '0 auto'}}/>
               </div>
               <div className="card-stacked">
                 <div className="card-content">
@@ -63,12 +63,14 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
           </div>
         </div>
       ) : (
-        <div className="center">
+        <div style={{color: 'white', fontWeight: 'bolder', paddingBottom: '15%', paddingTop: '2vh'}} className="center">
         <img style={{margin: '-5%'}} src="https://i.ibb.co/5kgsWDW/deadpool-shrug-poster-r09b83d0c41094c369d6f4af36aa5b56d-wvu-8byvr-704.webp" alt="Page non trouvée"/>
-        <h1>Aucun Avenger à afficher !</h1> 
+        <h1 style={{margin: '6% 0 0'}}>Aucun Avenger à afficher !</h1> 
+        <div style={{marginTop: '1%'}}>
         <Link to="/" className="btn red darken-2">
           Retourner à l'accueil
         </Link>
+        </div>
       </div>
       )}
     </div>
