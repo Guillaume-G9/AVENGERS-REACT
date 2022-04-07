@@ -1,9 +1,9 @@
 import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps, Link } from 'react-router-dom';
 import Avenger from '../models/avenger';
-import AVENGERS from '../models/mock-avenger';
 import formatDate from '../helpers/format-date';
 import formatRace from '../helpers/format-race';
+import AvengerService from '../services/avenger-service'
   
 type Params = { id: string };
   
@@ -12,25 +12,21 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
   const [avenger, setAvenger] = useState<Avenger|null>(null);
   
   useEffect(() => {
-    AVENGERS.forEach(avenger => {
-      if (match.params.id === avenger.id.toString()) {
-        setAvenger(avenger);
-      }
-    })
+    AvengerService.getAvenger(+match.params.id).then(avenger => setAvenger(avenger));
   }, [match.params.id]);
     
   return (
     <div>
       { avenger ? (
         <div className="row">
-          <div className="col s12 m8 offset-m2"> 
-            <h2 className="header center">{ avenger.superHeroName }</h2>
+          <div className="col s12 m8 offset-m2" style={{paddingBottom: '5%'}}> 
+            <h2 style={{color: 'white', fontWeight: 'bolder'}} className="header center">{ avenger.superHeroName.toUpperCase() }</h2>
             <div className="card hoverable"> 
               <div className="card-image">
             <Link to={`/avengers/edit/${avenger.id}`} style={{margin: '5%'}} className="btn-large btn-floating halfway-fab waves-effect waves-light red darken-2">
             <i className="material-icons">edit</i>
             </Link>
-                <img className="hoverable" src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
+                <img src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
               </div>
               <div className="card-stacked">
                 <div className="card-content">
@@ -59,8 +55,8 @@ const AvengersDetail: FunctionComponent<RouteComponentProps<Params>> = ({ match 
                     </tbody>
                   </table>
                 </div>
-                <div className="btn red lighten-3">
-                  <Link to="/">Retour</Link>
+                <div className="btn red darken-2">
+                  <Link style={{color: 'white'}} to="/">Retour</Link>
                 </div>
               </div>
             </div>

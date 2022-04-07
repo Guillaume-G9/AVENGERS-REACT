@@ -11,7 +11,7 @@ type Props = {
     borderColor?: string
 };
 
-const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'}) => {
+const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '5px solid #B71C1C'}) => {
 
     const [color, setColor] = useState<string>()
     const history = useHistory();
@@ -21,7 +21,7 @@ const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'
     }
 
     const hideBorder = () => {
-        setColor('#f5f5f5');
+        setColor('3px solid #f5f5f5');
     }
 
     const goToAvenger = (id: number) => {
@@ -30,10 +30,10 @@ const AvengerCard: FunctionComponent<Props> = ({avenger, borderColor = '#691d26'
 
     return (
      
-    <div className="col s12 m4"  onClick={() => goToAvenger(avenger.id)} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
-        <div className="card horizontal" style={{ borderColor: color}}>
+    <div style={{cursor: 'pointer'}} className="col s12 m4"  onClick={() => goToAvenger(avenger.id)} onMouseEnter={showBorder} onMouseLeave={hideBorder}>
+        <div className="card horizontal" style={{border: color}} >
             <div className="card-image">
-                <img height="200vh" src={avenger.picture} alt= {avenger.name} />
+                <img height="100%" src={avenger.picture} alt= {avenger.name} />
             </div> 
             <div className="card-stacked">
                 <div className="card-content">

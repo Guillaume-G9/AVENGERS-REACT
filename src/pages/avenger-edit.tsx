@@ -2,7 +2,7 @@ import React, { FunctionComponent, useState, useEffect } from 'react';
 import { RouteComponentProps } from 'react-router-dom';
 import AvengerForm from '../components/avenger-form';
 import Avenger from '../models/avenger';
-import AVENGERS from '../models/mock-avenger';
+import AvengerService from '../services/avenger-service'
  
 type Params = { id: string };
   
@@ -11,19 +11,15 @@ const AvengerEdit: FunctionComponent<RouteComponentProps<Params>> = ({ match }) 
   const [avenger, setAvenger] = useState<Avenger|null>(null);
   
   useEffect(() => {
-    AVENGERS.forEach(avenger => {
-      if (match.params.id === avenger.id.toString()) {
-        setAvenger(avenger);
-      }
-    })
+    AvengerService.getAvenger(+match.params.id).then(avenger => setAvenger(avenger));
   }, [match.params.id]);
     
   return (
     <div>
       { avenger ? (
-        <div className="row">
-            <h2 className="header center">Edit { avenger.name }</h2>
-            <AvengerForm avenger={avenger}></AvengerForm>
+        <div className="row" style={{paddingBottom: '5%'}}>
+            <h2 style={{color: 'white', fontWeight: 'bolder'}} className="header center">EDIT { avenger.superHeroName.toUpperCase() }</h2>
+            <AvengerForm avenger={avenger} isEditForm={true}></AvengerForm>
         </div>
       ) : (
         <div className="center">

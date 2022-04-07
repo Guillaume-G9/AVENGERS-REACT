@@ -23,6 +23,9 @@ const formatRace = (race: string): string => {
       case 'Celestial': 
         color = 'pink accent-1'; 
         break;
+      case 'Machine': 
+        color = 'grey accent-1'; 
+        break;
       default: 
         color = 'grey darken-2'; 
         break; 

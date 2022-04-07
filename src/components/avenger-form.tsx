@@ -2,9 +2,11 @@ import React, { FunctionComponent, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import Avenger from '../models/avenger';
 import formatRace from '../helpers/format-race';
+import AvengerService from '../services/avenger-service';
   
 type Props = {
-  avenger: Avenger
+  avenger: Avenger,
+  isEditForm: boolean
 };
   
 type Field = {
@@ -14,17 +16,21 @@ type Field = {
 }
 
 type Form = { 
+    picture: Field,
     superHeroName: Field,
     name: Field,
+    familyName: Field,
     races: Field,
     backstory: Field
 }
 
-const AvengerForm: FunctionComponent<Props> = ({avenger}) => {
+const AvengerForm: FunctionComponent<Props> = ({avenger, isEditForm}) => {
   
     const [form, setForm] = useState<Form>({
+        picture: { value: avenger.picture },
         superHeroName: { value: avenger.superHeroName, isValid: true},
         name: { value: avenger.name, isValid: true},
+        familyName: { value: avenger.familyName, isValid: true},
         races: { value: avenger.race, isValid: true},
         backstory: { value: avenger.backstory, isValid: true}
     })
@@ -32,7 +38,7 @@ const AvengerForm: FunctionComponent<Props> = ({avenger}) => {
     const history = useHistory();
 
     const races: string[] = [
-        'Human', 'God', 'Mutant', 'Synthezoid', 'Deviant', 'Eternal', 'Celestial' 
+        'Human', 'God', 'Mutant', 'Synthezoid', 'Deviant', 'Eternal', 'Celestial', 'Machine'
     ];
 
     const isOfRace = (race: string): boolean => {
@@ -66,21 +72,51 @@ const AvengerForm: FunctionComponent<Props> = ({avenger}) => {
         e.preventDefault();
         const isFormValid = validateForm();
         if(isFormValid) {
-            history.push(`/avengers/${avenger.id}`);
+          avenger.picture = form.picture.value
+            avenger.superHeroName = form.superHeroName.value;
+            avenger.name = form.name.value;
+            avenger.familyName = form.familyName.value;
+            avenger.backstory = form.backstory.value;
+            avenger.race = form.races.value;
+
+            isEditForm ? updateAvenger() : addAvenger();
         }
     }
 
+    const addAvenger = () => {
+      AvengerService.addAvenger(avenger).then(() => history.push(`/avengers/`));
+    }
+    const updateAvenger = () => {
+      AvengerService.updateAvenger(avenger).then(() => history.push(`/avengers/${avenger.id}`));
+    }
+
+    const isAddForm = () => {
+      return !isEditForm;
+    }
 
     const validateForm = () => {
         let newForm: Form = form;
 
+        if(isAddForm()){
+          const start = "https://";
+          
+          if(!form.picture.value.startsWith(start)) {
+            const errorMsg: string = "The URL is not valid.";
+            const newField: Field = {value: form.picture.value, error: errorMsg, isValid: false};
+            newForm = {...form, ...{picture: newField}}
+          } else {
+            const newField: Field = { value: form.picture.value, error: '', isValid: true };
+            newForm = { ...form, ...{picture: newField}}
+          }
+        }
+
         if(!/^[a-zA-Z0-9_\-. ]{2,25}$/.test(form.superHeroName.value)) {
             const errorMsg: string = `Veuillez entrer un nom de super-héros valide.`;
-            const newField: Field = { value: form.name.value, error: errorMsg, isValid: false };
-            newForm = { ...newForm, ...{ name: newField }}
+            const newField: Field = { value: form.superHeroName.value, error: errorMsg, isValid: false };
+            newForm = { ...newForm, ...{ superHeroName: newField }}
         } else {
             const newField: Field = { value: form.superHeroName.value, error: '', isValid: true };
-            newForm = { ...newForm, ...{ name: newField }};
+            newForm = { ...newForm, ...{ superHeroName: newField }};
         }
 
         setForm(newForm);
@@ -100,32 +136,62 @@ const AvengerForm: FunctionComponent<Props> = ({avenger}) => {
         return true;
     }
 
+    const deleteAvenger = () => {
+        AvengerService.deleteAvenger(avenger).then(() => history.push(`/avengers`));
+    }
+
   return (
     <form onSubmit={e => handleSubmit(e)}>
       <div className="row">
         <div className="col s12 m8 offset-m2">
           <div className="card hoverable"> 
+            {isEditForm && (
             <div className="card-image">
               <img src={avenger.picture} alt={avenger.name} style={{width: '250px', margin: '0 auto'}}/>
+              <span style={{margin: '5%'}} className="btn-floating halfway-fab waves-effect waves-light btn-large red darken-2">
+                  <i onClick={deleteAvenger} className="material-icons">delete</i>
+              </span>            
             </div>
+            )}
             <div className="card-stacked">
               <div className="card-content">
-                {/* Pokemon name */}
+                {/*Avenger image*/}
+                {isAddForm() && (
+                <div className="form-group">
+                  <label htmlFor="name">image</label>
+                  <input value={form.picture.value} name="picture" id="picture" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
+                  {form.picture.error &&
+                  <div className="card-panel red accent-1">
+                    {form.picture.error}
+                  </div>}
+                </div>
+                )}                
+                {/* Avenger SuperHero Name */}
                 <div className="form-group">
                   <label htmlFor="name">Superhero Name</label>
                   <input value={form.superHeroName.value} name="superHeroName" id="superHeroName" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
+                  {form.superHeroName.error &&
+                  <div className="card-panel red accent-1">
+                    {form.superHeroName.error}
+                  </div>
+                  }
                 </div>
-                {/* Pokemon hp */}
+                {/* Avenger name */}
                 <div className="form-group">
                   <label htmlFor="hp">Name</label>
                   <input value={form.name.value} name="name" id="name" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
                 </div>
-                {/* Pokemon cp */}
+                {/* Avenger fName */}
+                <div className="form-group">
+                  <label htmlFor="hp">Family Name</label>
+                  <input value={form.familyName.value} name="familyName" id="familyName" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
+                </div>
+                {/* Avenger backstory */}
                 <div className="form-group">
                   <label htmlFor="cp">Backstory</label>
                   <input value={form.backstory.value} id="backstory" name="backstory" type="text" className="form-control" onChange={e => handleInputChange(e)}></input>
                 </div>
-                {/* Pokemon types */}
+                {/* Avenger races */}
                 <div className="form-group">
                   <label>Race(s)</label>
                   {races.map(race => (

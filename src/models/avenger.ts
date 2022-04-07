@@ -14,15 +14,15 @@ export default class Avener {
     // 2. Définition des valeurs par défaut des propriétés 
     constructor(
      id: number,
-     name: string = 'name',
-     familyName: string = 'familyName',
+     name: string = 'Enter a name',
+     familyName: string = 'Enter a family name',
      race: Array<string> = ['Human'],
      age: number = 1000,
-     picture: string = 'http://...',
-     superHeroName: string = "superHeroName",
+     picture: string = 'http://{enter your URL here}',
+     superHeroName: string = "Enter a superhero name",
      author: string ="author",
      created: Date = new Date(),
-     backstory: string ="backstory"
+     backstory: string ="Write the character's story here"
     ) {
      // 3. Initialisation des propiétés 
      this.id = id;
