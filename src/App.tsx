@@ -5,16 +5,20 @@ import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import PageNotFound from './pages/page-not-found';
 import AvengerEdit from './pages/avenger-edit';
 import AvengerAdd from './pages/avenger-add';
+import AvengerSearch from './components/avenger-search';
 
   
 const App: FunctionComponent = () => {
     
  return (
      <Router>
-         <div style={{background: `repeat 100% / contain url("https://i.ibb.co/R9Rp87c/marvel-logo-wallpaper.webp")`}}>
+         <div style={{height: '160vh', background: `repeat 100% / contain url("https://i.ibb.co/R9Rp87c/marvel-logo-wallpaper.webp")`}}>
              <nav  style={{marginBottom: '15vh'}}>
                  <div className="nav-wrapper red darken-4">
                     <Link to="/avengers" className="brand-logo center">MCU MEMBERS</Link>
+                    <div>
+                        <AvengerSearch /> 
+                    </div>
                  </div>
              </nav>
              <Switch>

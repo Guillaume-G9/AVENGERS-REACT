@@ -3,7 +3,6 @@ import Avenger from '../models/avenger';
 import AvengerCard from '../components/avenger-card';
 import AvengerService from '../services/avenger-service';
 import { Link} from 'react-router-dom';
-import AvengerSearch from '../components/avenger-search';
   
 const AvengerList: FunctionComponent = () => {
   const [avengers, setAvengers] = useState<Avenger[]>([]);
@@ -14,11 +13,8 @@ const AvengerList: FunctionComponent = () => {
   
   return (
     <div>
-      <div style={{paddingBottom: '10%'}} className="container"> 
+      <div style={{paddingBottom: '10%', height: '100vh'}} className="container"> 
         <div className="row">
-          <div>
-          <AvengerSearch /> 
-          </div>
         {avengers.map(avenger => (
           <AvengerCard key={avenger.id} avenger={avenger}/>
         ))}

@@ -22,10 +22,10 @@ const AvengerSearch: FunctionComponent = () => {
   
   return (
     <div className="row"> 
-    <div className="col s12 m6 offset-m3"> 
+    <div className="col s12 m3 right red darken-4"> 
       <div className="card"> 
-      <div className="card-content"style={{color: 'red'}}> 
-        <div className="input-field"> 
+      <div> 
+        <div style={{height: '3vh'}}  className="input-field"> 
         <input type="text" placeholder="Look for a member of the Marvel cinematic universe" value={term} onChange={e => handleInputChange(e)} /> 
         </div> 
         <div className='collection'>
