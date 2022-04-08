@@ -6,6 +6,8 @@ import PageNotFound from './pages/page-not-found';
 import AvengerEdit from './pages/avenger-edit';
 import AvengerAdd from './pages/avenger-add';
 import AvengerSearch from './components/avenger-search';
+import Login from './pages/login';
+import PrivateRoute from './PrivateRoute';
 
   
 const App: FunctionComponent = () => {
@@ -13,19 +15,21 @@ const App: FunctionComponent = () => {
  return (
      <Router>
          <div style={{height: '160vh', background: `repeat 100% / contain url("https://i.ibb.co/R9Rp87c/marvel-logo-wallpaper.webp")`}}>
-             <nav  style={{marginBottom: '15vh'}}>
-                 <div className="nav-wrapper red darken-4">
-                    <Link to="/avengers" className="brand-logo center">MCU MEMBERS</Link>
-                    <div>
-                        <AvengerSearch /> 
-                    </div>
+             <nav className="red darken-4" style={{marginBottom: '15vh', padding: '0 3% 0 3%'}}>
+                 <div style={{display: 'flex', gap: '80%'}} className="nav-wrapper red darken-4">
+                    <Link to="/avengers" className="brand-logo center">MARVEL</Link>
+                    <AvengerSearch />
+                    <Link to={`/login`} className="right">
+                        <i style={{fontSize: '3em'}} className="large material-icons">account_circle</i>
+                    </Link>
                  </div>
              </nav>
              <Switch>
                 <Route exact path="/" component={AvengerList} />
+                <Route exact path="/login" component ={Login} />
                 <Route exact path="/avengers" component={AvengerList} />
-                <Route exact path="/avenger/add" component={AvengerAdd} />
-                <Route exact path="/avengers/edit/:id" component={AvengerEdit} />
+                <PrivateRoute exact path="/avenger/add" component={AvengerAdd} />
+                <PrivateRoute exact path="/avengers/edit/:id" component={AvengerEdit} />
                 <Route path="/avengers/:id" component={AvengerDetail} />
                 <Route component={PageNotFound} />
              </Switch>

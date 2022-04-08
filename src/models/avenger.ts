@@ -1,4 +1,4 @@
-export default class Avener {
+export default class Avenger {
     // 1. Typage des propiétés
     id: number;
     name: string;

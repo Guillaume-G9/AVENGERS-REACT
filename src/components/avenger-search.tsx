@@ -22,11 +22,10 @@ const AvengerSearch: FunctionComponent = () => {
   
   return (
     <div className="row"> 
-    <div className="col s12 m3 right red darken-4"> 
       <div className="card"> 
       <div> 
         <div style={{height: '3vh'}}  className="input-field"> 
-        <input type="text" placeholder="Look for a member of the Marvel cinematic universe" value={term} onChange={e => handleInputChange(e)} /> 
+        <input style={{padding: '3%'}} type="text" placeholder="Look for a member of the MCU" value={term} onChange={e => handleInputChange(e)} /> 
         </div> 
         <div className='collection'>
         {avengers.map((avenger) => (
@@ -37,7 +36,6 @@ const AvengerSearch: FunctionComponent = () => {
         </div> 
       </div> 
       </div> 
-    </div> 
     </div>
   );
 }
